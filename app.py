@@ -12,14 +12,15 @@ import json, time
 
 app = Flask(__name__)
 
-@app.route('/hooks/api')
+@app.route('/hooks')
 def index(name=None):
     return render_template('index.html', name=index)
 
 @app.route("/hooks/api/v1", methods = ["GET", "OPTIONS"])
 def apis():
+    request_url = request.host_url
     api = API()
-    res = api.build_api()
+    res = api.build_api(request_url)
     response = app.response_class(
         response=json.dumps(res),
         status = 200,
