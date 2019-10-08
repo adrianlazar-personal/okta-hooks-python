@@ -12,7 +12,7 @@ import json, time
 
 app = Flask(__name__)
 
-@app.route('/')
+@app.route('/api')
 def index(name=None):
     return render_template('index.html', name=index)
 
