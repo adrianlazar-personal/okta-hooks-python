@@ -12,11 +12,11 @@ import json, time
 
 app = Flask(__name__)
 
-@app.route('/api')
+@app.route('/hooks/api')
 def index(name=None):
     return render_template('index.html', name=index)
 
-@app.route("/api/v1", methods = ["GET", "OPTIONS"])
+@app.route("/hooks/api/v1", methods = ["GET", "OPTIONS"])
 def apis():
     api = API()
     res = api.build_api()
@@ -28,7 +28,7 @@ def apis():
     )
     return response
 
-@app.route('/api/v1/eventHooks/Okta', methods=["GET", "POST", "OPTIONS"])
+@app.route('/hooks/api/v1/eventHooks/Okta', methods=["GET", "POST", "OPTIONS"])
 def eventHooks():
 
     request_headers = request.headers
@@ -62,7 +62,7 @@ def eventHooks():
 
 
 
-@app.route('/api/v1/inlineHooks/Okta/importHooks', methods=["GET", "POST", "OPTIONS"])
+@app.route('/hooks/api/v1/inlineHooks/Okta/importHooks', methods=["GET", "POST", "OPTIONS"])
 def importHooks():
     request_headers = request.headers
 
@@ -82,7 +82,7 @@ def importHooks():
         
         return "Hello World!"
 
-@app.route('/api/v1/inlineHooks/Okta/tokenHooks', methods=["GET", "POST", "OPTIONS"])
+@app.route('/hooks/api/v1/inlineHooks/Okta/tokenHooks', methods=["GET", "POST", "OPTIONS"])
 def tokenHooks():
     request_headers = request.headers
 
@@ -102,7 +102,7 @@ def tokenHooks():
         
         return "Hello World!"
 
-@app.route('/api/v1/inlineHooks/Okta/samlHooks', methods=["GET", "POST", "OPTIONS"])
+@app.route('/hooks/api/v1/inlineHooks/Okta/samlHooks', methods=["GET", "POST", "OPTIONS"])
 def samlHooks():
     request_headers = request.headers
 
@@ -122,7 +122,7 @@ def samlHooks():
         
         return "Hello World!"
 
-@app.route('/api/v1/inlineHooks/Okta/registrationHooks', methods=["GET", "POST", "OPTIONS"])
+@app.route('/hooks/api/v1/inlineHooks/Okta/registrationHooks', methods=["GET", "POST", "OPTIONS"])
 def registrationHooks():
     request_headers = request.headers
 
